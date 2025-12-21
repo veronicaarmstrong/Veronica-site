@@ -1,14 +1,15 @@
 :root{
   /* Editorial + soft warmth */
   --bg: #f6f5f3;                 /* warm off-white */
-  --paper: #ffffff;              /* page sheet */
+  --paper: #ffffff;              /* sheet */
   --ink: #0e0f12;                /* near-black */
   --muted: rgba(14,15,18,0.68);  /* warm gray */
   --hairline: rgba(14,15,18,0.12);
 
-  --max: 860px;
+  --max: 920px;                  /* slightly wider to let the grid breathe */
   --pad: 28px;
-  --sheet-pad: 34px;
+  --sheet-pad: 40px;
+  --gutter: 28px;                /* column gap */
 }
 
 *{ box-sizing: border-box; }
@@ -29,22 +30,45 @@ body{
   padding: 56px var(--pad);
 }
 
+/* Sheet */
 .sheet{
   background: var(--paper);
   border: 1px solid var(--hairline);
   padding: var(--sheet-pad);
+
+  /* subtle depth = “premium paper” */
+  box-shadow: 0 18px 60px rgba(14,15,18,0.08);
 }
 
+/* Editorial grid (desktop) */
+@media (min-width: 860px){
+  .sheet{
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr; /* left text column + right meta column */
+    column-gap: var(--gutter);
+    grid-template-rows: auto;
+  }
+
+  .identity{ grid-column: 1 / 2; }
+  .statement{ grid-column: 1 / 2; }
+  .links{ grid-column: 2 / 3; align-self: start; }
+  .footer{ grid-column: 1 / 3; }
+}
+
+/* Identity */
 .identity{
   margin-bottom: 34px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .name{
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   font-size: 22px;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 .meta{
@@ -61,6 +85,7 @@ body{
   letter-spacing: -0.01em;
 }
 
+/* Statement */
 .statement{
   margin: 0 0 42px;
   max-width: 70ch;
@@ -69,15 +94,28 @@ body{
 .lede{
   margin: 0 0 14px;
   font-size: 18px;
-  line-height: 1.85;
+  line-height: 1.9; /* warmth comes from leading */
 }
 
 .lede:last-child{ margin-bottom: 0; }
 
+/* Links becomes its own “sidebar module” on desktop */
 .links{
   margin: 0 0 48px;
   padding-top: 18px;
   border-top: 1px solid var(--hairline);
+}
+
+@media (min-width: 860px){
+  .links{
+    margin-top: 6px;
+    padding-top: 0;
+    border-top: none;
+
+    /* editorial sidebar feel */
+    border-left: 1px solid var(--hairline);
+    padding-left: var(--gutter);
+  }
 }
 
 .label{
@@ -117,6 +155,7 @@ body{
   color: var(--muted);
 }
 
+/* Footer */
 .footer{
   border-top: 1px solid var(--hairline);
   padding-top: 14px;
@@ -126,6 +165,7 @@ body{
   letter-spacing: 0.08em;
 }
 
+/* Accessibility */
 a:focus-visible{
   outline: 2px solid rgba(14,15,18,0.28);
   outline-offset: 4px;
@@ -134,7 +174,7 @@ a:focus-visible{
 /* Mobile */
 @media (max-width: 560px){
   .page{ padding: 40px 18px; }
-  .sheet{ padding: 24px; }
-  .lede{ font-size: 17px; line-height: 1.8; }
+  .sheet{ padding: 26px; }
+  .lede{ font-size: 17px; line-height: 1.85; }
   .hint{ display: block; margin-left: 0; margin-top: 6px; }
 }
