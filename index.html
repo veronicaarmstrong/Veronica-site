@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Veronica — Brand Manager in CPG (Bay Area, California)." />
+    <title>VERONICA</title>
+
+    <!-- Typography: editorial + modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="page">
+      <article class="sheet" aria-label="Veronica personal site">
+        <header class="identity">
+          <p class="name">VERONICA</p>
+
+          <div class="meta">
+            <p class="role">Brand Manager, CPG</p>
+            <p class="location">Bay Area, California</p>
+          </div>
+        </header>
+
+        <section class="statement" aria-label="Statement">
+          <p class="lede">
+            I work in brand management within consumer packaged goods, focused on clarity,
+            positioning, and long-term brand equity.
+          </p>
+          <p class="lede">
+            This site exists as a quiet point of reference.
+          </p>
+        </section>
+
+        <section class="links" aria-label="Links">
+          <p class="label">LINKS</p>
+
+          <ul class="linklist">
+            <li>
+              <a
+                class="link"
+                href="https://www.linkedin.com/in/veronicalarmstrong"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+              <span class="hint">Work history and writing</span>
+            </li>
+
+            <li>
+              <a class="link" href="mailto:veronica@veronicaarmstrong.com">
+                veronica@veronicaarmstrong.com
+              </a>
+              <span class="hint">Fastest way to reach me</span>
+            </li>
+          </ul>
+        </section>
+
+        <footer class="footer" aria-label="Footer">
+          <span>© <span id="year"></span></span>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
